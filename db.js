@@ -4,13 +4,12 @@ import chalk from "chalk";
 
 dotenv.config();
 
-let db;
-const database = process.env.BANCO_MONGO;
+let db = null;
 const client = new MongoClient(process.env.MONGO_URI);
 
 try {
     await client.connect();
-    db = client.db(database);
+    db = client.db("hackathon");
 } catch (error) {
     console.log(chalk.bold.red("error to connect", error));
 }
